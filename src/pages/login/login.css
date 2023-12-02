@@ -1,0 +1,22 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.login-details {
+  max-width: 42rem;
+  padding: 112px 20px 20px 72px;
+}
+
+.email-input label {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.email-input small {
+  color: rgb(121 136 151/1);
+  font-weight: 500;
+  font-size: 0.75rem;
+}

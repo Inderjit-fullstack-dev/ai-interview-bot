@@ -1,0 +1,17 @@
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-container .intro-component {
+  display: block;
+  grid-column: span 2 / span 2;
+}
+
+.main-container .child-outlet {
+  position: relative;
+  grid-column: span 3 / span 3;
+}
