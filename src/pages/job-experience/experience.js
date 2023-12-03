@@ -21,6 +21,8 @@ export default function Experience() {
     { name: "Above 5 Years", code: " more than 5 years of experience" },
   ];
 
+  const TOTAL_QUESTIONS = 10;
+
   const handleFileChange = (event) => {
     const selectedFile =
       event.target.files && event.target.files.length > 0
@@ -50,6 +52,7 @@ export default function Experience() {
         index: index,
         question: question,
         answer: "",
+        correctness: 0,
       };
     });
 
@@ -80,7 +83,7 @@ export default function Experience() {
     try {
       localStorage.setItem("meta", pageText);
       setLoader(true);
-      const prompt = `Generate 12 interview questions with no answer for a candidate having ${experience}, focusing on their expertise in ${pageText}. and do not repeat the question.`;
+      const prompt = `Generate ${TOTAL_QUESTIONS} interview questions with no answer for a candidate having ${experience}, focusing on their expertise in ${pageText}. and do not repeat the question.`;
       const result = await getAIResult(prompt);
       setLoader(false);
 
@@ -135,6 +138,7 @@ export default function Experience() {
           visible={true}
         />
       )}
+
       <Toast ref={toast} />
 
       <div className="wrapper">
