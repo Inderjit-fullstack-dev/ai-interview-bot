@@ -1,7 +1,8 @@
 @import url("primereact/resources/themes/lara-light-cyan/theme.css");
-@import '~primeflex/primeflex.css';
+@import "~primeflex/primeflex.css";
 
-html, body{
+html,
+body {
   margin: 0px;
   padding: 0px;
 }
@@ -35,4 +36,8 @@ html, body{
 .continue-button .p-fileupload-choose.p-button-secondary {
   background: rgb(43, 51, 58);
   /* Add other style modifications as needed */
+}
+
+.container {
+  padding: 2em;
 }

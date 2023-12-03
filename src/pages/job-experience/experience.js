@@ -3,21 +3,25 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import * as pdfjs from "pdfjs-dist";
-
-import "./experience.css";
 import getAIResult from "../../utils/gptUtility";
 import { TailSpin } from "react-loader-spinner";
+import "./experience.css";
+import { useNavigate } from "react-router";
+
 export default function Experience() {
   const [experience, setExperience] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [loader, setLoader] = useState(false);
   let [pageText, setPageText] = useState("");
   const toast = useRef(null);
+  const navigate = useNavigate();
   const data = [
     { name: "You are a newbie", code: "no experience" },
     { name: "Under 5 Years", code: "less than 5 years of experience" },
     { name: "Above 5 Years", code: " more than 5 years of experience" },
   ];
+
+  const TOTAL_QUESTIONS = 10;
 
   const handleFileChange = (event) => {
     const selectedFile =
@@ -48,10 +52,12 @@ export default function Experience() {
         index: index,
         question: question,
         answer: "",
+        correctness: 0,
       };
     });
 
     localStorage.setItem("questions", JSON.stringify(questionObj));
+    navigate("/interview-questions");
   };
 
   const handleProceedNext = async () => {
@@ -75,8 +81,9 @@ export default function Experience() {
       return;
     }
     try {
+      localStorage.setItem("meta", pageText);
       setLoader(true);
-      const prompt = `Generate 12 technical and coding-related only interview questions with no answer for a candidate having ${experience}, focusing on their expertise in ${pageText}.`;
+      const prompt = `Generate ${TOTAL_QUESTIONS} interview questions with no answer for a candidate having ${experience}, focusing on their expertise in ${pageText}. and do not repeat the question.`;
       const result = await getAIResult(prompt);
       setLoader(false);
 
@@ -98,10 +105,9 @@ export default function Experience() {
         const page = await pdf.getPage(pageNum);
         const textContent = await page.getTextContent();
         const text = textContent.items.map((item) => item.str).join(" ");
-
         pageText += " " + text;
-        setPageText(pageText);
       }
+      setPageText(pageText);
     } catch (error) {
       console.error("Error loading PDF:", error);
     }
@@ -120,7 +126,7 @@ export default function Experience() {
             backgroundColor: "rgba(0, 0, 0, .8)",
             height: "100vh",
             position: "absolute",
-            width: "100vw",
+            width: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -132,35 +138,40 @@ export default function Experience() {
           visible={true}
         />
       )}
-      <Toast ref={toast} />
-      <Dropdown
-        value={experience}
-        onChange={(e) => setExperience(e.value)}
-        options={data}
-        optionLabel="name"
-        placeholder="Your Experience..."
-        className="w-full md:w-14rem"
-      />
-      <div>
-        <h3>Resume (PDF - Max 5MB)</h3>
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={handleFileChange}
-        />
-        {uploadedFile && (
-          <div>
-            <h3>Uploaded File</h3>
-            <p>{uploadedFile.name}</p>
-          </div>
-        )}
-      </div>
 
-      <Button
-        // disabled={!uploadedFile}
-        label="Proceed Next"
-        onClick={handleProceedNext}
-      />
+      <Toast ref={toast} />
+
+      <div className="wrapper">
+        <div>
+          <Dropdown
+            value={experience}
+            onChange={(e) => setExperience(e.value)}
+            options={data}
+            optionLabel="name"
+            placeholder="Your Experience..."
+            className="w-full md:w-14rem"
+          />
+          <h3>Resume (PDF - Max 5MB)</h3>
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={handleFileChange}
+          />
+          {uploadedFile && (
+            <div>
+              <h3>Uploaded File</h3>
+              <p>{uploadedFile.name}</p>
+            </div>
+          )}{" "}
+          <br />
+          <br />
+          <Button
+            // disabled={!uploadedFile}
+            label="Proceed Next"
+            onClick={handleProceedNext}
+          />
+        </div>
+      </div>
     </>
   );
 }
