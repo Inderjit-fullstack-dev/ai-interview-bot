@@ -1,4 +1,4 @@
-@import url("primereact/resources/themes/lara-light-cyan/theme.css");
+@import url("primereact/resources/themes/lara-light-purple/theme.css");
 @import '~primeflex/primeflex.css';
 
 html, body{
@@ -35,4 +35,15 @@ html, body{
 .continue-button .p-fileupload-choose.p-button-secondary {
   background: rgb(43, 51, 58);
   /* Add other style modifications as needed */
+}
+
+
+.main-container-2 {
+  /* display: grid; */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background: black;
 }

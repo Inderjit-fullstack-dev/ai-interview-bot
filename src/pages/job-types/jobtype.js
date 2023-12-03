@@ -13,7 +13,7 @@ export default function JobTypes() {
     { name: "IOS Developer", code: "PRS" },
   ];
   return (
-    <div className="job-type-container ">
+    <div className="job-type-container">
       <div className="job-type-details">
         <h1 className="header">Select a Job Type</h1>
         <Dropdown

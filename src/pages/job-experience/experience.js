@@ -133,34 +133,43 @@ export default function Experience() {
         />
       )}
       <Toast ref={toast} />
-      <Dropdown
-        value={experience}
-        onChange={(e) => setExperience(e.value)}
-        options={data}
-        optionLabel="name"
-        placeholder="Your Experience..."
-        className="w-full md:w-14rem"
-      />
-      <div>
-        <h3>Resume (PDF - Max 5MB)</h3>
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={handleFileChange}
-        />
-        {uploadedFile && (
+      <div className="experience-container">
+        <div className="experience-details">
+          <h1 className="header">Almost Ready To Start Interview</h1>
+          <Dropdown
+            value={experience}
+            onChange={(e) => setExperience(e.value)}
+            options={data}
+            optionLabel="name"
+            placeholder="Your Experience..."
+            className="w-full md:w-14rem"
+          />
           <div>
-            <h3>Uploaded File</h3>
-            <p>{uploadedFile.name}</p>
+            <h3>Resume (PDF - Max 5MB)</h3>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={handleFileChange}
+            />
+            {uploadedFile && (
+              <div>
+                <h3>Uploaded File</h3>
+                <p>{uploadedFile.name}</p>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </div>
 
-      <Button
-        // disabled={!uploadedFile}
-        label="Proceed Next"
-        onClick={handleProceedNext}
-      />
+        <div className="continue-button">
+          <div className="max-width-42">
+            <Button
+              label="Continue"
+              severity="secondary"
+              onClick={handleProceedNext}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
