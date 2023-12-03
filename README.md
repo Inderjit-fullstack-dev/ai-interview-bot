@@ -27,7 +27,3 @@ https://ai-interview-chatbot.web.app/
 ![App Screenshot](https://raw.githubusercontent.com/Inderjit-fullstack-dev/ai-interview-bot/main/src/assets/3-question-attempt.jpg)
 
 ![App Screenshot](https://raw.githubusercontent.com/Inderjit-fullstack-dev/ai-interview-bot/main/src/assets/4-final-result.jpg)
-
-## 🚀 About Me
-
-Innovative Software Engineer | Expert in .NET Core, React.js, Angular, AWS and Azure | Creating Scalable Solutions for Optimal User Experiences
