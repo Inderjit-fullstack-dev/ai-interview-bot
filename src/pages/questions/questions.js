@@ -109,46 +109,58 @@ export default function Questions() {
             margin: 0,
             padding: 0,
             zIndex: 100,
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
           }}
           wrapperClass=""
           visible={true}
         />
       )}
-      {currentQuestion && (
-        <div className="container">
-          <h4>{currentQuestion.question}</h4>
-          <InputTextarea
-            autoResize
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            rows={10}
-            cols={60}
-          />
-          <div style={{ marginTop: "10px" }}>
-            {/* <Button
-              label={isRecording ? "Stop" : "Say"}
-              onClick={toggleRecognition}
-            /> */}
-            <Button
-              disabled={currentIndex > questions.length - 1}
-              label={
-                currentIndex === questions.length - 1
-                  ? "Submit"
-                  : "Attempt Next Question"
-              }
-              onClick={handleNextQuestion}
-            />
-            &nbsp;
-            <Button
-              label="I don't know"
-              onClick={() => {
-                setAnswer("I don't know");
-              }}
-            />
-            {/* <Button label="View Result" onClick={viewResult} /> */}
-          </div>
+
+      <div className="questions-container">
+        <div className="main-header">
+          <h1 className="header">Questions</h1>
         </div>
-      )}
+        {currentQuestion && (
+          <>
+            <div className="questions-details">
+              <h4>{currentQuestion.question}</h4>
+              <InputTextarea
+                autoResize
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                rows={10}
+                cols={60}
+              />
+            </div>
+            <div className="continue-button">
+              <div className="max-width-42">
+                <Button
+                  label="I don't know"
+                  severity="secondary"
+                  outlined
+                  onClick={() => {
+                    setAnswer("I don't know");
+                  }}
+                />
+                &nbsp; &nbsp;
+                <Button
+                  severity="secondary"
+                  disabled={currentIndex > questions.length - 1}
+                  label={
+                    currentIndex === questions.length - 1
+                      ? "Submit"
+                      : "Attempt Next Question"
+                  }
+                  onClick={handleNextQuestion}
+                />
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }

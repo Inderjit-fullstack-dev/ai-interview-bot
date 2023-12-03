@@ -34,8 +34,13 @@ body {
 .continue-button .p-buttonset.p-button-secondary > .p-button,
 .continue-button .p-splitbutton.p-button-secondary > .p-button,
 .continue-button .p-fileupload-choose.p-button-secondary {
-  background: rgb(43, 51, 58);
+  background: rgb(43, 51, 58) !important;
   /* Add other style modifications as needed */
+}
+
+.continue-button .p-button.p-button-secondary.p-button-outlined, .p-buttonset.p-button-secondary > .p-button.p-button-outlined, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined, .p-fileupload-choose.p-button-secondary.p-button-outlined{
+  background: transparent !important;
+  color: rgb(43, 51, 58) !important;
 }
 
 .container {

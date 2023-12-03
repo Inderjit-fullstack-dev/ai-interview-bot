@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 
 export default function JobTypes() {
   const [selectedJobType, setSelectedJobType] = useState(null);
-  const cities = [
+  const jobTypes = [
     { name: "Frontend Developer", code: "NY" },
     { name: "Backend Developer", code: "RM" },
     { name: "Full Stack Developer", ode: "LDN" },
@@ -19,7 +19,7 @@ export default function JobTypes() {
         <Dropdown
           value={selectedJobType}
           onChange={(e) => setSelectedJobType(e.value)}
-          options={cities}
+          options={jobTypes}
           optionLabel="name"
           placeholder="Select a Job Type"
           className="w-full md:w-14rem"

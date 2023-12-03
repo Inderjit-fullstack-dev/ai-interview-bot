@@ -126,23 +126,26 @@ export default function Experience() {
             backgroundColor: "rgba(0, 0, 0, .8)",
             height: "100vh",
             position: "absolute",
-            width: "100%",
+            width: "100vw",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             margin: 0,
             padding: 0,
             zIndex: 100,
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
           }}
           wrapperClass=""
           visible={true}
         />
       )}
-
       <Toast ref={toast} />
-
-      <div className="wrapper">
-        <div>
+      <div className="experience-container">
+        <div className="experience-details">
+          <h1 className="header">Almost Ready To Start Interview</h1>
           <Dropdown
             value={experience}
             onChange={(e) => setExperience(e.value)}
@@ -151,25 +154,30 @@ export default function Experience() {
             placeholder="Your Experience..."
             className="w-full md:w-14rem"
           />
-          <h3>Resume (PDF - Max 5MB)</h3>
-          <input
-            type="file"
-            accept="application/pdf"
-            onChange={handleFileChange}
-          />
-          {uploadedFile && (
-            <div>
-              <h3>Uploaded File</h3>
-              <p>{uploadedFile.name}</p>
-            </div>
-          )}{" "}
-          <br />
-          <br />
-          <Button
-            // disabled={!uploadedFile}
-            label="Proceed Next"
-            onClick={handleProceedNext}
-          />
+          <div>
+            <h3>Resume (PDF - Max 5MB)</h3>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={handleFileChange}
+            />
+            {uploadedFile && (
+              <div>
+                <h3>Uploaded File</h3>
+                <p>{uploadedFile.name}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="continue-button">
+          <div className="max-width-42">
+            <Button
+              label="Continue"
+              severity="secondary"
+              onClick={handleProceedNext}
+            />
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,39 @@
+.questions-container .main-header{
+  padding: 112px 20px 20px 72px;
+}
+
+.main-header .header{
+  margin: 0px !important;
+}
+
+.questions-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.questions-details{
+  max-width: 42rem;
+  padding: 0px 0px 0px 72px;
+  width: 100%;
+}
+
+.questions-details h4{
+  margin-top: 0px;
+}
+
+.continue-button .p-button.p-button-help.p-button-outlined,
+.p-buttonset.p-button-help > .p-button.p-button-outlined,
+.p-splitbutton.p-button-help > .p-button.p-button-outlined,
+.p-fileupload-choose.p-button-help.p-button-outlined {
+  background-color: transparent !important;
+  color: mediumslateblue;
+  border: 1px solid;
+  margin-right: 20px;
+  min-width: 120px;
+}
+
+.questions-details .p-inputtext{
+  width: 100%;
+}

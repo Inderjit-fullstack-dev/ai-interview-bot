@@ -17,6 +17,10 @@
   text-align: center;
   gap: 20px;
   padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 40%;
 }
 
 .template-wrapper h2{

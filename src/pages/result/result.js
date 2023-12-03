@@ -65,14 +65,17 @@ export default function Result() {
         </div>
       ))}
 
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <Button
-          label="Go to Home page"
-          onClick={() => {
-            localStorage.clear();
-            navigate("/");
-          }}
-        />
+      <div className="continue-button">
+        <div className="max-width-42">
+          <Button
+            label="Go to Home page"
+            severity="secondary"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/");
+            }}
+          />
+        </div>
       </div>
     </div>
   );
