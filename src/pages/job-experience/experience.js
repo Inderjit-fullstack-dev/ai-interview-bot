@@ -7,6 +7,7 @@ import getAIResult from "../../utils/gptUtility";
 import { TailSpin } from "react-loader-spinner";
 import "./experience.css";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export default function Experience() {
   const [experience, setExperience] = useState(null);
@@ -21,7 +22,15 @@ export default function Experience() {
     { name: "Above 5 Years", code: " more than 5 years of experience" },
   ];
 
-  const TOTAL_QUESTIONS = 10;
+  const TOTAL_QUESTIONS = 5;
+
+  useEffect(() => {
+    const email = localStorage.getItem("user_email");
+    if (!email) {
+      navigate("/");
+      return;
+    }
+  }, []);
 
   const handleFileChange = (event) => {
     const selectedFile =

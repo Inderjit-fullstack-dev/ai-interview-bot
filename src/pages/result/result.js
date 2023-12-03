@@ -29,14 +29,15 @@ export default function Result() {
     if (result) {
       setAnswers(result);
       const totalCorrectness = result.reduce(
-        (sum, item) => sum + item.correctness,
+        (sum, item) => sum + parseInt(item.correctness),
         0
       );
+      const thresholdScore = (result.length * 100) / 2;
 
-      console.log(totalCorrectness);
-      const passingThreshold = 0.5 * totalCorrectness;
-      const isPassed = totalCorrectness > passingThreshold;
-      console.log(isPassed);
+      console.log("totalCorrectness", totalCorrectness);
+      console.log("thresholdScore", thresholdScore);
+
+      const isPassed = totalCorrectness >= thresholdScore ? true : false;
       setIsPassed(isPassed);
     }
   }, []);

@@ -22,7 +22,17 @@ export default function Login() {
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: "Please enter your email...",
+        detail: "Enter your email...",
+        life: 2000,
+      });
+      return;
+    }
+
+    if (!validateEmail(sanitizedEmail)) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Enter a valid email",
         life: 2000,
       });
       return;
@@ -30,6 +40,11 @@ export default function Login() {
 
     localStorage.setItem("user_email", email);
     navigate("/job-experience");
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   return (

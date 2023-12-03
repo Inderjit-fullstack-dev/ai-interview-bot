@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./jobtype.css";
 import { Dropdown } from "primereact/dropdown";
-import { Button } from "primereact/button"; 
+import { Button } from "primereact/button";
 
 export default function JobTypes() {
   const [selectedJobType, setSelectedJobType] = useState(null);
