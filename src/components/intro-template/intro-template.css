@@ -23,13 +23,19 @@
   width: 40%;
 }
 
-.template-wrapper h2{
+.template-wrapper .logo {
+  height: 150px;
+  width: auto;
+  overflow: hidden;
+}
+
+.template-wrapper h2 {
   font-size: 40px;
   font-weight: 700;
   margin: 0px;
   padding: 0px;
 }
 
-.template-wrapper p{
+.template-wrapper p {
   margin: 0px;
 }
